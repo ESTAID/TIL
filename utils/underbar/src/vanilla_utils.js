@@ -35,6 +35,7 @@
   //  위 `_.first`와 거의 비슷합니다. 첫 `n` item이 아닌 뒤에서 부터 `n` item을 가지고 있는
   // array를 return합니다. 만약 `n`이 `undefined`이면 마지막 item을 return합니다.
   _.last = function(array, n) {
+    return n === undefined ? array[array.length - 1] : n === 0 ? array.slice(-n, n) : array.slice(-n);
   };
 
   //  `iterator(value, key, collection)`를 collection의 item마다 invoke합니다.
@@ -43,6 +44,15 @@
   //  Note: `_.each` function은 `iterator` function을
   // collection의 item마다 invoke만 할뿐 value를 return하지 않습니다.
   _.each = function(collection, iterator) {
+    if (Array.isArray(collection)) {
+      for (var i = 0; i < collection.length; i++) {
+        iterator(collection[i], i, collection);
+      }
+    } else {
+      for (var key in collection) {
+        iterator(collection[key], key, collection);
+      }
+    }
   };
 
   //  `array`에서 `target` item이 있는지 찾아 발견된 item의 위치(index)를 return합니다.
@@ -64,20 +74,47 @@
 
   // `truth` test를 pass한 item들을 담은 array를 return합니다.
   _.filter = function(collection, test) {
+    var result  = [];
+    _.each(collection, function(val) {
+      if(test(val)) {
+        result.push(val);
+      }
+    });
+    return result;
   };
 
   // `truth` test를 pass 못한 item들을 담은 array를 return합니다.
   _.reject = function(collection, test) {
     //  TIP: `_.filter`을 사용하여 구현하세요.
+    return _.filter(collection, function(val) {
+      return !test(val);
+    });
   };
 
   // 같은_값이_없는(duplicate-free) array를 return합니다.
   _.uniq = function(array) {
+    var result = [];
+    for(var i = 0; i < array.length; i++) {
+      for(var j = 0; j < array.length; j++) {
+        if(array[j] === array[i]) {
+          break;
+        }
+      }
+      if(j === i) {
+        result.push(array[i]);
+      }
+    }
+    return result;
   };
 
 
   // iterator를 item별로 invoke하여 return된 value를 array에 담아 return합니다.
   _.map = function(collection, iterator) {
+    var result = [];
+    for (var i = 0; i < collection.length; i++) {
+      result.push(iterator.call(collection, collection[i], i, collection));
+    }
+    return result;
  };
 
 
@@ -119,6 +156,17 @@
   //   });
 
   _.reduce = function(collection, iterator, accumulator) {
+    var initializing = arguments.length === 2;
+
+    _.each(collection, function(val) {
+      if (initializing) {
+        accumulator = val;
+        initializing = false;
+      } else {
+        accumulator = iterator(accumulator, val);
+      }
+    });
+    return accumulator;
   };
 
   // `collection`이 `target` value를 가지고 있는지 `===`을 사용하여 있는지 check합니다.
@@ -137,13 +185,28 @@
   // `collection`의 element들이 전부 `truth` test를 pass하는지 측정합니다.
   _.every = function(collection, iterator) {
     // TIP: reduce()를 사용하여 풀어보세요.
+    iterator = iterator || _.identity;
+    if(!(collection.length)) {
+      return true;
+    }
+    return _.reduce(collection, function(allFound, item) {
+      if(!allFound) {
+        return false;
+      }
+      return iterator(item) ? true : false;
+    }, true);
   };
 
   // `collection`의 item중 하나라도 `truth` test를 pass하느지 측정합니다.
   // `iterator`가 `undefined`이면 기본 iterator를 사용합니다.
   _.some = function(collection, iterator) {
     // TIP: every()를 잘 사용하면 간단하게 끝납니다.
-  };
+    iterator = iterator || _.identity;
+    // true가 1개 이상일때 그 값은 true가 된다.
+    return !_.every(collection, function(item) {
+      return !iterator(item);
+    });
+  };  
 
 
   /**
@@ -167,11 +230,39 @@
   //
   //  obj1에는 이제 key1, key2, key3들이 있습니다.
   //
+  // _.each method :
+  // _.each = function(collection, iterator) {
+  //   if (Array.isArray(collection)) {
+  //     for (var i = 0; i < collection.length; i++) {
+  //       iterator(collection[i], i, collection);
+  //     }
+  //   } else {
+  //     for (var key in collection) {
+  //       iterator(collection[key], key, collection);
+  //     }
+  //   }
+  // };
   _.extend = function(obj) {
+    var arguObj = Array.prototype.slice.call(arguments, 1);
+    _.each(arguObj, function(val, index, arguObj) {
+      _.each(arguObj[index], function(val, key){
+        obj[key] = val;
+      });
+    });
+    return obj;
   };
 
   // extend와 같지만, obj에 이미 있는 key들은 덮어쓰기(overwrite)하지 않음.
   _.defaults = function(obj) {
+    var arguObj = Array.prototype.slice.call(arguments, 1);
+    _.each(arguObj, function(val, index, arguObj) {
+      _.each(arguObj[index], function(val, key){
+        if(obj[key] === undefined) {
+          obj[key] = val;
+        }
+      });
+    });
+    return obj;   
   };
 
 
