@@ -288,7 +288,10 @@
     return function() {
       if (!alreadyCalled) {
         // TIP: 한 function에서 받은 arguments를 다른 function으로 넘길때에는 .apply(this, arguments)를 많이 사용합니다.
+        // 왜 apply 메소드를 써야하는지?
+        // apply를 뺀 경우 [object Arguments]undefinedundefined <- 라고 뜸
         result = func.apply(this, arguments);
+        
         alreadyCalled = true;
       }
 
@@ -305,12 +308,24 @@
   // 먼저 받은 argument를 가지고 invoke이 예전에 됬는지 확인을 합니다. 막약 예전에 한번 같은 argument들을 가지고
   // invoke이 되어 result를 return했다면 예전에 return된 result를 다시 return합니다.
   _.memoize = function(func) {
+    var obj = {};
+    return function(){
+      var args = JSON.stringify(arguments);
+      if( !(obj.hasOwnProperty(args)) ) {
+        obj[args] = func.apply(this, arguments);
+      }
+      return obj[args];
+    }
   };
 
   //  `func` argument로 받은 function을 `wait` argument로 받은 millisecond 숫자만큼 delay하여
   // 3번째 부터 받은 argument들을 사용하여 invoke합니다.
   // Example: _.delay(someFunction, 500, 'a', 'b') 은 `someFunction('a', 'b')`를 500ms후에 invoke합니다.
   _.delay = function(func, wait) {
+    var args = Array.prototype.splice.call(arguments, 2);
+    return setTimeout(function() {
+      func.apply(this, args);   
+    }, wait);
   };
-
+  
 }());
