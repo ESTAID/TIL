@@ -7,12 +7,12 @@
 
 - Regular function call
 ```javascript
-var name = "ken";
+var name = "geonwoo";
 function foo () {
 console.log(this.name);
 }
 
-foo(); // ken -> this는 Global Ojbect. 브라우저 상에서는 window
+foo(); // geonwoo -> this는 Global Ojbect. 브라우저 상에서는 window
 ```
 
 - use strict
@@ -28,12 +28,12 @@ foo();
 - Dot Notation
 ```javascript
 var age = 100;
-var ken = {
+var geonwoo = {
 age: 35,
 foo: function () {
-  console.log(this.age); // this 호출 시점은 38번 라인에 ken이기때문에 this는 ken
+  console.log(this.age); // this 호출 시점은 38번 라인에 geonwoo이기때문에 this는 geonwoo
   }
 };
 
-ken.foo();
+geonwoo.foo();
 ```
