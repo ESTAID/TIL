@@ -44,7 +44,7 @@ console.log(b); // 1 내부 스코프에 있는 값은 못쓴다.
 ```
 
 ## 함수 선언식
-- 함수 선언 *declaration*은 지정된 매개변수로 함수를 정의합니다.
+- 함수 선언 *declaration*은 지정된 매개변수로 함수를 정의한다.
 ```javascript
 hoisted(); // logs "foo"
 
@@ -56,7 +56,7 @@ hoisted(); // logs "foo"
 ```
 
 ## 함수 표현식
-- 함수 표현 *expression*으로 함수를 정의할 수 있습니다.
+- 함수 표현 *expression*으로 함수를 정의할 수 있다.
 ```javascript
 // var notHoisted --> undefined
 notHoisted(); // TypeError: notHoisted is not a function
