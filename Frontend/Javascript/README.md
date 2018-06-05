@@ -13,3 +13,6 @@
   - [call, apply, bind](https://github.com/Geon-wooBryanKim/TIL/blob/master/Frontend/Javascript/call-apply-bind.md)
   - [new 연산자](https://github.com/Geon-wooBryanKim/TIL/blob/master/Frontend/Javascript/new.md)
   - [Closure](https://github.com/Geon-wooBryanKim/TIL/blob/master/Frontend/Javascript/closure.md)
+  - [Prototype](https://github.com/Geon-wooBryanKim/TIL/blob/master/Frontend/Javascript/prototype.md)
+  - [Object Oriented Programming](https://github.com/Geon-wooBryanKim/TIL/blob/master/Frontend/Javascript/OOP.md)
+  - [디자인패턴](https://github.com/Geon-wooBryanKim/TIL/blob/master/Frontend/Javascript/design-pattern.md)
