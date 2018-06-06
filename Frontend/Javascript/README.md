@@ -16,3 +16,5 @@
   - [Prototype](https://github.com/Geon-wooBryanKim/TIL/blob/master/Frontend/Javascript/prototype.md)
   - [Object Oriented Programming](https://github.com/Geon-wooBryanKim/TIL/blob/master/Frontend/Javascript/OOP.md)
   - [디자인패턴](https://github.com/Geon-wooBryanKim/TIL/blob/master/Frontend/Javascript/design-pattern.md)
+  - [Event loop](https://github.com/Geon-wooBryanKim/TIL/blob/master/Frontend/Javascript/eventloop.md)
+  - [Promise](https://github.com/Geon-wooBryanKim/TIL/blob/master/Frontend/Javascript/promise.md)
