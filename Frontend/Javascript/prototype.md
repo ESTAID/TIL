@@ -44,7 +44,7 @@ a1.__proto__ === a2.__proto__;
 ```
 - 위와 같은 예제를 쉽게 그림으로 설명하면
 
-<p align="center"><img src="https://github.com/Geon-wooBryanKim/TIL/blob/master/Frontend/prototype1.png" width="400" height="320" align="center" /></p>
+<p align="center"><img src="https://github.com/Geon-wooBryanKim/TIL/blob/master/Frontend/prototype1.png" width="550" height="350" align="center" /></p>
 
 - 항상 생성한 객체의 상단에는 Object가 있다.
 - 직접적으로 접근을 하기 위해서는 던더프로토(_ _ proto _ _) or Object.getPrototypeOf(variable)를 사용하면 된다.
@@ -107,6 +107,6 @@ a1.identify(); // alert: "Hello a1"
 - 프로토타입으로 함수를 선언하면 메모리 할당량을 줄일 수 있다.
 - 그림으로 설명하면 아래와 같다.
 
-<p align="center"><img src="https://github.com/Geon-wooBryanKim/TIL/blob/master/Frontend/prototype2.png" width="400" height="320" align="center" /></p>
+<p align="center"><img src="https://github.com/Geon-wooBryanKim/TIL/blob/master/Frontend/prototype2.png" width="550" height="350" align="center" /></p>
 
 - 객체를 생성할때마다 함수를 정의하면 그 공간 계속 차지하고 있어야하지만, 프로토타입에 선언해서 공유하면 메모리 할당량을 줄일 수 있다.
