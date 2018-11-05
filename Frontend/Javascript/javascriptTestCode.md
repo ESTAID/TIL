@@ -15,9 +15,7 @@
 
 많은 시간이 들고, 실행하고 유지보수를 하는데 비용이 많이 드는 순서는 다음과 같다:
 
-<p align="center"><img src="https://github.com/Geon-wooBryanKim/TIL/blob/master/images/javascriptTestCode.png" width="550" height="350" align="center" /></p>
-
-![](https://github.com/Geon-wooBryanKim/TIL/blob/master/images/prototype1.png)
+![](https://github.com/Geon-wooBryanKim/TIL/blob/master/images/javascriptTestCode.png)
 
 하지만,
 
