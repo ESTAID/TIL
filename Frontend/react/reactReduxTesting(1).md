@@ -287,11 +287,11 @@
 
 `결과(정상)`:
 
-<p align="center"><img src="https://github.com/Geon-wooBryanKim/TIL/blob/master/images/reactReduxTesting(1)-1.png" width="550" height="350" align="center" /></p>
+<p align="center"><img src="https://github.com/Geon-wooBryanKim/TIL/blob/master/images/reactReduxTesting(1)-1.png" width="500" height="300" align="center" /></p>
 
 `결과(비정상)`:
 
-<p align="center"><img src="https://github.com/Geon-wooBryanKim/TIL/blob/master/images/reactReduxTesting(1)-2.png" width="550" height="350" align="center" /></p>
+<p align="center"><img src="https://github.com/Geon-wooBryanKim/TIL/blob/master/images/reactReduxTesting(1)-2.png" width="500" height="300" align="center" /></p>
 
 ## 리액트에 Enzyme 테스트 설정하기
 
@@ -594,11 +594,11 @@ rootDir:
 
 `결과(정상)`:
 
-<p align="center"><img src="https://github.com/Geon-wooBryanKim/TIL/blob/master/images/reactReduxTesting(1)-3.png" width="550" height="350" align="center" /></p>
+<p align="center"><img src="https://github.com/Geon-wooBryanKim/TIL/blob/master/images/reactReduxTesting(1)-3.png" width="500" height="300" align="center" /></p>
 
 `결과(비정상)`:
 
-<p align="center"><img src="https://github.com/Geon-wooBryanKim/TIL/blob/master/images/reactReduxTesting(1)-4.png" width="550" height="350" align="center" /></p>
+<p align="center"><img src="https://github.com/Geon-wooBryanKim/TIL/blob/master/images/reactReduxTesting(1)-4.png" width="500" height="300" align="center" /></p>
 
 다시 스냅샷 테스트를 실행하면 `App` 컴포넌트에 대한 테스트는 실패할 것이다. 그리고 스냅샷을 업데이트를 할지 코드를 고칠지 결정하면 된다.
 
