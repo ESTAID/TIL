@@ -3,12 +3,13 @@
 브라우저의 렌더링 엔진은 다음과 같이 파싱을 합니다.
 
 1. HTML 문서 파싱
-2. DOM Tree 생성
-3. CSSOM 생성
-4. Render Tree 생성
-5. Render Tree 구축
-6. Render Tree 배치 (Layout)
-7. Render Tree 그리기 (Painting)
+2. `<head>` 태그에 있는 외부 자원(CSS, JS) 로드
+3. DOM Tree 생성
+4. CSSOM 생성
+5. Render Tree 생성
+6. Render Tree 구축
+7. Render Tree 배치 (Layout)
+8. Render Tree 그리기 (Painting)
 
 <p align="center"><img src="https://github.com/Geon-wooBryanKim/TIL/blob/master/images/browser-workflow-with-virtual-dom.png" align="center" /></p>
 
@@ -16,29 +17,33 @@
 
 간단히 말해 HTML 파서는 HTML 마크업을 파싱 트리로 변환하는 작업을 합니다.
 
-2.DOM Tree 생성
+2.`<head>` 태그에 있는 외부 자원(CSS, JS) 로드
+
+외부 자원을 로드합니다. 이때 스크립트를 로드할할 때, 특별한 옵션을 주지 않을 경우 문서의 파싱은 중단됩니다. 왜냐하면 스크립트가 DOM을 간접적으로 조작할 수 있기 때문입니다.
+
+3.DOM Tree 생성
 
 DOM Tree란 HTML 문서를 객체(Node)로 표현한 트리들의 집합입니다. 각 Node들은 각 html 엘리먼트들과 연관되어 있습니다.
 
-3.CSSOM 생성
+4.CSSOM 생성
 
 CSSOM은 CSS 객체 모델(CSS Object Model)을 말합니다. DOM Tree를 생성하는 동안 `link` 태그와 같이 외부 CSS 스타일 시트를 만나면 해당 작업을 진행합니다.
 
-4.Render Tree 생성
+5.Render Tree 생성
 
 Render Tree란 CSS와 함께 html을 시각적으로 표현한 것을 말합니다. CSSOM을 통해 외부 CSS파일을 파싱하고 각 엘리먼트의 `inline` 스타일도 파싱하여 Render Tree를 생성합니다.
 
-5.Render Tree 구축
+6.Render Tree 구축
 
 Render Tree 구축하기 위해 브라우저는 DOM의 Root 트리에서 부터 노드들을 순회합니다. 순회하면서 CSSOM과 inline 스타일로 박힌 노드들의 스타일 정보를 계산해서 객체형태로 반환합니다.(이때 display:none 같은 속성을 설정한 노드는 렌더 트리에서 보이질 않습니다.)
 
 해당 작업은 동기적으로 일어나고, DOM 트리에 새로운 노드가 추가되면 그 노드의 attach 함수가 실행됩니다.(이는 Webkit 기준입니다.)
 
-6.Render Tree 배치(Layout)
+7.Render Tree 배치(Layout)
 
 노드가 화면 어디에 표시되어야 하는지 좌표를 전달하고 위치를 잡는 작업을 진행합니다.
 
-7.Render Tree 그리기(Paint)
+8.Render Tree 그리기(Paint)
 
 DOM 트리의 각 노드들을 순회하면서 paint()함수를 호출합니다.
 
